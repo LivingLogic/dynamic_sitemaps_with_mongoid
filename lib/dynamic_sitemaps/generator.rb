@@ -58,7 +58,7 @@ module DynamicSitemaps
     end
 
     def sitemap_for(collection, options = {}, &block)
-      raise ArgumentError, "The collection given to `sitemap_for` must respond to #find_each. This is for performance. Use `Model.scoped` to get an ActiveRecord relation that responds to #find_each." unless collection.respond_to?(:find_each)
+      raise ArgumentError, "The collection given to `sitemap_for` must respond to #each. This is for performance. Use `Model.scoped` to get an ActiveRecord relation that responds to #each." unless collection.respond_to?(:each)
 
       name = options.delete(:name) || collection.model_name.to_s.underscore.pluralize.to_sym
       options[:collection] = collection
